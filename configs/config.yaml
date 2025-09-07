@@ -1,0 +1,15 @@
+server:
+  http:
+    addr: 0.0.0.0:8000
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:9000
+    timeout: 1s
+data:
+  database:
+    driver: mysql
+    source: ${DB_USER}:${DB_PASS}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}?parseTime=True&loc=Local
+  redis:
+    addr: ${REDIS_ADDR}
+    read_timeout: 0.2s
+    write_timeout: 0.2s
