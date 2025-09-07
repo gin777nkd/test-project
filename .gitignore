@@ -39,3 +39,6 @@ bin/
 
 # Environment variables file
 .env
+
+# Config file with environment variables (if any)
+config_env.yaml

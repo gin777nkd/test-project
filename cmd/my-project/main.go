@@ -53,7 +53,7 @@ func main() {
 	flag.Parse()
 
 	// Load biến môi trường từ file .env
-	_ = godotenv.Load()
+	_ = godotenv.Load("../../.env")
 
 	// Đọc file config.yaml
 	configPath := flagconf + "/config.yaml"
@@ -69,7 +69,7 @@ func main() {
 	}
 
 	// Ghi ra file tạm để Kratos đọc
-	tmpConfigPath := "/tmp/config_env.yaml"
+	tmpConfigPath := "../../config_env.yaml"
 	err = os.WriteFile(tmpConfigPath, []byte(configStr), 0644)
 	if err != nil {
 		panic(err)
@@ -86,7 +86,7 @@ func main() {
 	)
 	c := config.New(
 		config.WithSource(
-			file.NewSource(flagconf),
+			file.NewSource(tmpConfigPath),
 		),
 	)
 	defer c.Close()
